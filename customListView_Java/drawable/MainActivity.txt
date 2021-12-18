@@ -1,0 +1,49 @@
+package com.example.cain.customlistview;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.ListView;
+
+import java.util.ArrayList;
+
+public class MainActivity extends AppCompatActivity {
+
+    ListView myListview;
+    ArrayList <Products> myList;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.main_activity);
+
+        myList = new ArrayList<Products> ();
+
+        Products p1 = new Products("AlienWare Laptop",
+                "this is the best laptop in the world!",
+                "laptop",2255,true);
+
+        Products p2 = new Products("32 GB DD4 RAM",
+                "this is the RAM you need !",
+                "memory",600,false);
+
+        Products p3 = new Products("Sata HardDisk",
+                "this is an SSD harddisk",
+                "harddisk",300,true);
+
+        Products p4 = new Products("Asus Monitor",
+                "FlatScreen HD Monitor",
+                "screen",800,true);
+
+        myList.add(p1);
+        myList.add(p2);
+        myList.add(p3);
+        myList.add(p4);
+
+        ProductAdapter myAdapter = new ProductAdapter(this, myList);
+
+
+        myListview = findViewById(R.id.myListView);
+
+        myListview.setAdapter(myAdapter);
+    }
+}

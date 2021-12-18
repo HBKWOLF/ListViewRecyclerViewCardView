@@ -1,0 +1,38 @@
+package com.example.stlab_4g.listviewapp;
+
+public class Products {
+
+    private String productName;
+    private String productDesc;
+    private String productType;
+    private double productPrice;
+    private boolean sale;
+
+    public Products(String productName, String productDesc, String productType, double productPrice, boolean sale) {
+        this.productName = productName;
+        this.productDesc = productDesc;
+        this.productType = productType;
+        this.productPrice = productPrice;
+        this.sale = sale;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public String getProductDesc() {
+        return productDesc;
+    }
+
+    public String getProductType() {
+        return productType;
+    }
+
+    public double getProductPrice() {
+        return productPrice;
+    }
+
+    public boolean isSale() {
+        return sale;
+    }
+}

@@ -1,0 +1,83 @@
+package com.example.cain.customlistview;
+
+import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ImageView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class ProductAdapter extends ArrayAdapter<Products> {
+
+    private Context context;
+    private ArrayList<Products> values;
+
+    public ProductAdapter(@NonNull Context context, ArrayList<Products> values) {
+        super(context, R.layout.row_layout, values);
+        this.context = context;
+        this.values = values;
+    }
+
+
+    @NonNull
+    @Override
+    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+
+        LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        View rowView = inflater.inflate(R.layout.row_layout, parent, false);
+
+        //by using the above lines, rowView has not got a link to row_layout
+
+        TextView productName = (TextView) rowView.findViewById(R.id.productName);
+        TextView productPrice = (TextView) rowView.findViewById(R.id.productPrice);
+        TextView productDesc = (TextView) rowView.findViewById(R.id.productDesc);
+
+        ImageView productImage = (ImageView) rowView.findViewById(R.id.productImage);
+        ImageView productSaleImage = (ImageView) rowView.findViewById(R.id.productSaleImage);
+
+        // values.get(position) is the ArrayList on the indicated position in the Listview.
+        //values.get(position). gets the method in Products class
+
+        productName.setText(values.get(position).getProductName());
+        productPrice.setText("" + values.get(position).getProductPrice());
+        productDesc.setText(values.get(position).getProductDesc());
+
+        if (values.get(position).getSale()) {
+            //which means a sale exist
+            productSaleImage.setImageResource(R.drawable.on_sale_big);
+        } else
+            productSaleImage.setImageResource(R.drawable.best_price);
+
+        setImages(position,productImage);
+
+
+        return rowView;
+    }
+
+
+    private void setImages(int position, ImageView productImage) {
+
+        if (values.get(position).getProductType().equals("laptop"))
+            productImage.setImageResource(R.drawable.laptop);
+
+        else if (values.get(position).getProductType().equals("memory"))
+            productImage.setImageResource(R.drawable.memory);
+
+        else if (values.get(position).getProductType().equals("screen"))
+            productImage.setImageResource(R.drawable.screen);
+
+        else if (values.get(position).getProductType().equals("harddisk"))
+            productImage.setImageResource(R.drawable.hdd);
+
+    }
+
+}
+
+
