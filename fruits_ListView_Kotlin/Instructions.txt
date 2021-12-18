@@ -1,0 +1,14 @@
+
+How to create a Customized FruitsView in Kotlin
+
+1/ images in the drawable should be placed in the resources document.
+
+2/ create a custom layout named fruits_layout. The design should be similar to that given in the fruits_layout file.
+   pay attention to the name of the components given in this layout (There are two components)/
+
+3/ create a Kotlin class named FruitsAdapter, and copy / paste the given code to this class.
+
+4/ Having done so, create a listView in activity_main.xml, and copy/paste the code from the provided MainActivity.kt 
+   to the project MainActivity.kt
+
+5/ if you had done everything right, the items will be displayed, when clicked on the item, a toast message is going to appear.

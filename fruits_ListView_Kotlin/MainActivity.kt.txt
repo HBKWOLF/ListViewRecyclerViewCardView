@@ -1,0 +1,31 @@
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.AdapterView
+import android.widget.ListView
+import android.widget.Toast
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        val fruits = arrayOf("Apple", "Banana", "Watermellon")
+        val images = intArrayOf(R.drawable.apple, R.drawable.banana, R.drawable.watermelon)
+
+        val myAdapter = FruitsAdapter(this@MainActivity, fruits, images)
+        val myListView = findViewById<ListView>(R.id.myListView)
+
+        myListView.adapter = myAdapter
+
+        myListView.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                Toast.makeText(
+                    this@MainActivity,
+                    "You clicked on " + fruits[position],
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+
+    }
+}
