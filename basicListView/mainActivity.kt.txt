@@ -1,0 +1,16 @@
+val myListView = findViewById<ListView>(R.id.myListView)
+        val OSArray:Array<String> = arrayOf("Android", "IOS", "WebOS", "Ubuntu", "Windows 10 ", "Mac OS")
+        val adapter = ArrayAdapter(this, android.R.layout.simple_list_item_1, OSArray)
+        myListView.adapter = adapter
+
+
+        myListView.adapter = adapter
+
+        myListView.onItemClickListener =
+            AdapterView.OnItemClickListener { parent, view, position, id ->
+                Toast.makeText(
+                    this@MainActivity,
+                    "You clicked on " + OSArray[position],
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
