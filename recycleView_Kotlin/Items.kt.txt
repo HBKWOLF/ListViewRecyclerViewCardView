@@ -1,0 +1,4 @@
+package com.example.recyclerviewex
+
+data class Items(val image: Int, val text: String) {
+}
