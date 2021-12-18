@@ -1,0 +1,14 @@
+
+How to create a Customized ListView in Kotlin
+
+1/ images in the drawable should be placed in the resources document.
+
+2/ create a custom layout named row_layout. The design should be similar to that given in the row_layout file.
+   pay attention to the name of the components given in this layout as they will be used in ProductsAdapter.
+
+3/ create products.kt and productAdapter.kt files. The code is provided.
+
+4/ Having done so, create a listView in activity_main.xml, and copy/paste the code from the provided MainActivity.kt 
+   to the project MainActivity.kt
+
+5/ if you had done everything right, the items will be displayed. 

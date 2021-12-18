@@ -1,0 +1,51 @@
+
+import androidx.appcompat.app.AppCompatActivity
+import android.os.Bundle
+import android.widget.ListView
+
+
+class MainActivity : AppCompatActivity() {
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+
+        var myList = ArrayList<Products>()
+
+        val p1 = Products(
+            "AlienWare Laptop",
+            "this is the best laptop in the world!",
+            "laptop", 2255, true
+        )
+
+        val p2 = Products(
+            "32 GB DDR4 RAM",
+            "this is the RAM you need !",
+            "memory", 600, false
+        )
+
+        val p3 = Products(
+            "Sata HardDisk",
+            "this is 1TB SSD harddisk",
+            "harddisk", 300, true
+        )
+
+        val p4 = Products(
+            "Asus Monitor",
+            "FlatScreen 4K HDR Monitor",
+            "screen", 800, true
+        )
+
+        myList.add(p1)
+        myList.add(p2)
+        myList.add(p3)
+        myList.add(p4)
+
+        val myAdapter = ProductAdapter(this, myList)
+
+
+        val myListView = findViewById<ListView>(R.id.myListView)
+
+        myListView.adapter = myAdapter
+
+    }
+}

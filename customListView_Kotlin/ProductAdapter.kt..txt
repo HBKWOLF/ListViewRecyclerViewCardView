@@ -1,0 +1,51 @@
+import android.content.Context
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
+import android.widget.ArrayAdapter
+import android.widget.ImageView
+import android.widget.TextView
+import org.jetbrains.annotations.Nullable
+import java.util.ArrayList
+
+
+class ProductAdapter(context: Context, values: ArrayList<Products>) :
+    ArrayAdapter<Products>(context, R.layout.row_layout, values) {
+    private val values: ArrayList<Products> = values
+    override fun getView(position: Int, @Nullable convertView: View?, parent: ViewGroup): View {
+        val inflater = context.getSystemService(Context.LAYOUT_INFLATER_SERVICE) as LayoutInflater
+        val rowView: View = inflater.inflate(R.layout.row_layout, parent, false)
+
+        //by using the above lines, rowView has not got a link to row_layout
+        val productName = rowView.findViewById<View>(R.id.productName) as TextView
+        val productPrice = rowView.findViewById<View>(R.id.productPrice) as TextView
+        val productDesc = rowView.findViewById<View>(R.id.productDesc) as TextView
+        val productImage = rowView.findViewById<View>(R.id.productImage) as ImageView
+        val productSaleImage = rowView.findViewById<View>(R.id.productSale) as ImageView
+
+        // values.get(position) is the ArrayList on the indicated position in the Listview.
+        //values.get(position). gets the method in Products class
+        productName.setText(values[position].productName)
+        productPrice.text = "" + values[position].productPrice
+        productDesc.setText(values[position].productDesc)
+        if (values[position].isSale) {
+            //which means a sale exist
+            productSaleImage.setImageResource(R.drawable.on_sale_big)
+        } else productSaleImage.setImageResource(R.drawable.best_price)
+        setImages(position, productImage)
+        return rowView
+    }
+
+    private fun setImages(position: Int, productImage: ImageView) {
+        if (values[position].productType
+                .equals("laptop")
+        ) productImage.setImageResource(R.drawable.laptop) else if (values[position].productType
+                .equals("memory")
+        ) productImage.setImageResource(R.drawable.memory) else if (values[position].productType
+                .equals("screen")
+        ) productImage.setImageResource(R.drawable.screen) else if (values[position].productType
+                .equals("harddisk")
+        ) productImage.setImageResource(R.drawable.hdd)
+    }
+
+}

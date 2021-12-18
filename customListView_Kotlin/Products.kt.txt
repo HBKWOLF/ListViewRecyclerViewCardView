@@ -1,0 +1,7 @@
+class Products(
+    val productName: String,
+    val productDesc: String,
+    val productType: String,
+    val productPrice: Int,
+    val isSale: Boolean
+)
